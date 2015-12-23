@@ -1,0 +1,32 @@
+Installation
+
+To proper install nginx, we will need to install the configuration files of nginx
+sudo aptitude install nginx-common
+
+Here are the mandatory options to pass to configure in order to have a proper install (just like through the package)
+./configure --sbin-path=/usr/sbin/nginx \
+--prefix=/etc/nginx \
+--conf-path=/etc/nginx/nginx.conf \
+--error-log-path=/var/log/nginx/error.log \
+--http-log-path=/var/log/nginx/access.log \
+--lock-path=/var/lock/nginx.lock \
+--pid-path=/var/run/nginx.pid \
+--with-http_ssl_module \
+--with-http_gzip_static_module \
+--add-module=<passenger-path>
+
+To find the path of passenger module, just run
+passenger-config --nginx-addon-dir
+
+Configuration
+
+If you follow the step before, the installation will be the same as if you install the packages.
+You just need to change the configuration files under /etc/nginx.
+
+Start/Stop
+
+To start
+sudo /etc/init.d/nginx start
+
+To stop
+sudo /etc/init.d/nginx stop
